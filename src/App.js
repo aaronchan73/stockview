@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Button from './components/Button'
 import Stocks from './components/Stocks'
 import Footer from './components/Footer'
+import TotalProfits from './components/TotalProfits'
 
 function App() {
 
@@ -24,6 +25,18 @@ function App() {
     name: "SBUX",
     bought: 111,
     current: 230
+  },
+  {
+    key: 3,
+    name: "NKE",
+    bought: 130,
+    current: 200
+  },
+  {
+    key: 4,
+    name: "PAL",
+    bought: 100,
+    current: 150
   }]);
 
   const addStock = () => {
@@ -31,13 +44,25 @@ function App() {
   }
 
   const removeStock = () => {
-    //STUB
+    // STUB
+  }
+
+  const calcProfits = () => {
+    let profits = 0;
+
+    stocks.forEach((stock) => {
+      profits += (stock.current - stock.bought);
+    });
+
+    return profits;
+
   }
 
   return (<div className='App'>
       <Header title="StockView"/>
-      <Button title="Add Stock" onClick={addStock}/>
+      <Button title="Add Stock" onClick={addStock} />
       <Button title="Delete Stock" onClick={removeStock} />
+      <TotalProfits profits={calcProfits()} />
       <Stocks stocks={stocks} />
       <Footer />
     </div>);
