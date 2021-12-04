@@ -6,7 +6,7 @@ const Header = ({title}) => {
         <header>
             <h1>{title}</h1>
         </header>
-    )
+    );
 }
 
 // Header.defaultProps = {
@@ -18,4 +18,4 @@ const Header = ({title}) => {
 
 // }
 
-export default Header
+export default Header;
