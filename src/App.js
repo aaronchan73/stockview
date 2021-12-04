@@ -8,19 +8,19 @@ import Footer from './components/Footer'
 function App() {
 
   const [stocks, setStocks] = useState([{
-    key: 1,
+    key: 0,
     name: "AAPL",
     bought: 155,
     current: 200
   },
   {
-    key: 2,
+    key: 1,
     name: "TSLA",
     bought: 300,
     current: 340
   },
   {
-    key: 3,
+    key: 2,
     name: "SBUX",
     bought: 111,
     current: 230
