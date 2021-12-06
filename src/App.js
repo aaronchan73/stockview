@@ -5,8 +5,11 @@ import Button from './components/Button'
 import Stocks from './components/Stocks'
 import Footer from './components/Footer'
 import TotalProfits from './components/TotalProfits'
+import AddStock from './components/AddStock'
 
 function App() {
+
+  const [showAddStock, setAddStock] = useState(false);
 
   const [stocks, setStocks] = useState([{
     key: 0,
@@ -39,10 +42,6 @@ function App() {
     current: 150
   }]);
 
-  const addStock = () => {
-    setStocks(stocks);
-  }
-
   const removeStock = () => {
     // STUB
   }
@@ -60,9 +59,11 @@ function App() {
 
   return (<div className='App'>
       <Header title="StockView"/>
-      <Button title="Add Stock" onClick={addStock} />
+      <Button title="Add Stock" onClick={() => {
+        setAddStock(!showAddStock)}} />
       <Button title="Delete Stock" onClick={removeStock} />
       <TotalProfits profits={calcProfits()} />
+      {showAddStock && <AddStock id="add" stocks={stocks}/>}
       <Stocks stocks={stocks} />
       <Footer />
     </div>);
