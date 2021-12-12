@@ -9,13 +9,4 @@ const Header = ({title}) => {
     );
 }
 
-// Header.defaultProps = {
-//     title: "Test"
-// }
-
-// Header.propTypes = {
-//     title: PropTypes.string,
-
-// }
-
 export default Header;
