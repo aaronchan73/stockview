@@ -1,44 +1,38 @@
 import React from 'react'
+import { useState } from 'react'
 
-const Stock = ({name, bought, current, showDelete}) => {
+let values = [];
 
-    let open;
-    // let high;
-    // let low;
+const Stock = ({name, bought}) => {
 
-    const componentDidMount = () => {
-        this.fetchStock();
-    }
+    let CODE = "AAPL";
+    let API_KEY = "5L4IWDVJ6FCUBAKL";
+    let API_URL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${CODE}&apikey=${API_KEY}`;
+    const [open, setOpen] = useState(0);
 
-    const fetchStock = () => {
+    fetch(API_URL)
+        .then(
+            (response) => {
+                return response.json();
+            }
+        )
+        .then(
+            (data) => {
 
-        let CODE = "AAPL";
-        let API_KEY = "5L4IWDVJ6FCUBAKL";
-        let API_URL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${CODE}&apikey=${API_KEY}`
-
-        fetch(API_URL)
-            .then(
-                (response) => {
-                    return response.json;
+                for (var date in data["Time Series (Daily)"]) {
+                    values.push(data["Time Series (Daily)"][date]["1. open"]);
                 }
-            )
-            .then(
-                (data) => {
-                    console.log(data);
 
-                    open = data["Time Series (Daily)"]["2021-12-23"]["1. open"];
-                    console.log(open);
-                }
-            )
-
-    }
+                setOpen(values[0]);
+            }
+        )
 
     return (
         <div className="stock">
             <h4>Stock: {name}</h4>
             <p>Bought Price: ${bought}</p>
-            <p>Current Price: ${current}</p>
-            <p>Net Profit: ${current - bought}</p>
+            <p>Open Price: ${open}</p>
+            <p>Net Profit: ${open - bought}</p>
         </div>
     );
 }

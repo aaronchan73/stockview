@@ -16,29 +16,25 @@ function App() {
 
   const [stocks, setStocks] = useState([{
     name: "AAPL",
-    bought: 155,
-    current: 200
+    bought: 136.8900
   },
-  {
-    name: "TSLA",
-    bought: 300,
-    current: 340
-  },
-  {
-    name: "SBUX",
-    bought: 111,
-    current: 230
-  },
-  {
-    name: "NKE",
-    bought: 130,
-    current: 200
-  },
-  {
-    name: "PAL",
-    bought: 100,
-    current: 150
-  }]);
+  // {
+  //   name: "TSLA",
+  //   bought: 300
+  // },
+  // {
+  //   name: "SBUX",
+  //   bought: 111
+  // },
+  // {
+  //   name: "NKE",
+  //   bought: 130
+  // },
+  // {
+  //   name: "PAL",
+  //   bought: 100
+  // }
+]);
 
   // const addStock = (stock) => {
   //   this.setStocks = [stocks, stock];
