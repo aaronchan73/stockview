@@ -40,19 +40,19 @@ function App() {
     current: 150
   }]);
 
-  const addStock = (stock) => {
-    this.setStocks = [stocks, stock];
-  }
+  // const addStock = (stock) => {
+  //   this.setStocks = [stocks, stock];
+  // }
 
-  const removeStock = (chosenStock) => {
-    let newStocks = [];
-    stocks.forEach((stock) => {
-      if(stock !== chosenStock) {
-        newStocks.push(stock);
-      }
-    });
-    this.setStocks = [newStocks];
-  }
+  // const removeStock = (chosenStock) => {
+  //   let newStocks = [];
+  //   stocks.forEach((stock) => {
+  //     if(stock !== chosenStock) {
+  //       newStocks.push(stock);
+  //     }
+  //   });
+  //   this.setStocks = [newStocks];
+  // }
 
   const calcProfits = () => {
     let profits = 0;

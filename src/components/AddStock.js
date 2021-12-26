@@ -13,7 +13,7 @@ const AddStock = ({stocks}) => {
             <input id="bought" name="bought"/><br/>
             <label for="quantity">Quantity: </label>
             <input id="quantity" name="quantity"/><br />
-            <input className="btn" type="button" onClick={submitStock} value="Submit"/>
+            <input className="btn" type="submit" onSubmit={submitStock()}/>
         </form>);
 }
 
