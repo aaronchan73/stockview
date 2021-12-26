@@ -50,25 +50,26 @@ function App() {
   //   this.setStocks = [newStocks];
   // }
 
-  const calcProfits = () => {
-    let profits = 0;
+  // const calcProfits = () => {
+  //   let profits = 0;
 
-    stocks.forEach((stock) => {
-      profits += (stock.current - stock.bought);
-    });
+  //   stocks.forEach((stock) => {
+  //     profits += (stock.current - stock.bought);
+  //   });
 
-    return profits;
+  //   return profits;
 
-  }
+  // }
+
+  //<TotalProfits profits={calcProfits()} />
 
   return (<div className='App'>
       <Header title="StockView"/>
       <Button title="Add Stock" onClick={() => {setAddStock(!showAddStock)}} />
       <Button title="Delete Stock" onClick={() => {setDeleteStock(!showDeleteStock)}} />
-      <TotalProfits profits={calcProfits()} />
       {showAddStock && <AddStock stocks={stocks}/>}
       {showDeleteStock && <DeleteStock stocks={stocks}/>}
-      <Stocks stocks={stocks} showDelete={showDeleteStock}/>
+      <Stocks stocks={stocks}/>
       <Footer />
     </div>);
 
