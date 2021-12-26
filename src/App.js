@@ -16,12 +16,12 @@ function App() {
 
   const [stocks, setStocks] = useState([{
     name: "AAPL",
-    bought: 136.8900
+    bought: 136.89
   },
-  // {
-  //   name: "TSLA",
-  //   bought: 300
-  // },
+  {
+    name: "TSLA",
+    bought: 954.56
+  },
   // {
   //   name: "SBUX",
   //   bought: 111
