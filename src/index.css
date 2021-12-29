@@ -56,6 +56,7 @@ body {
 }
 
 .stock {
+  border-radius: 15px;
   background: #424242;
   margin: 5px;
   padding: 10px 20px;
