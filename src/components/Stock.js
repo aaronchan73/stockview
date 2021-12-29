@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { TiDelete } from "react-icons/ti";
 
 let values = [];
 
@@ -30,8 +31,8 @@ const Stock = ({stock, onDelete}) => {
 
 
     return (
-        <div className="stock" onClick={() => onDelete(stock.id)}>
-            <h4>Stock: {stock.name}</h4>
+        <div className="stock">
+            <h4>Stock: {stock.name} <TiDelete onClick={() => onDelete(stock.id)}/> </h4>
             <p>Bought Price: ${stock.bought}</p>
             <p>Open Price: ${(open * 1).toFixed(2)}</p>
             <p>Net Profit: ${(open - stock.bought).toFixed(2)}</p>
