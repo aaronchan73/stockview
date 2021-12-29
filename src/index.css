@@ -58,13 +58,11 @@ body {
 .stock {
   border-radius: 15px;
   background: #424242;
-  margin: 5px;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
   padding: 10px 20px;
   width: 350px;
-  float: left;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   cursor: pointer;
 }
 
