@@ -31,7 +31,7 @@ const Stock = ({stock, onDelete}) => {
 
 
     return (
-        <div className="stock">
+        <div className="stock" style={{color: "#E0E0E0"}}>
             <h4>Stock: {stock.name} <TiDelete onClick={() => onDelete(stock.id)}/> </h4>
             <p>Bought Price: ${stock.bought}</p>
             <p>Open Price: ${(open * 1).toFixed(2)}</p>

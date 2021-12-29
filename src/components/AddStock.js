@@ -6,7 +6,7 @@ const AddStock = ({stocks}) => {
         
     }
 
-    return (<form>
+    return (<form style={{color: "#E0E0E0"}}>
             <label for="code">Stock Code: </label>
             <input id="code" name="code"/><br/>
             <label for="bought">Bought Price: </label>

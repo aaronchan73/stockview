@@ -8,6 +8,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
+  background-color: #212121;
 }
 
 .container {
@@ -29,7 +30,7 @@ body {
 
 .btn {
   display: inline-block;
-  background: #000;
+  background: #424242;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -55,7 +56,7 @@ body {
 }
 
 .stock {
-  background: #f4f4f4;
+  background: #424242;
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
