@@ -54,7 +54,7 @@ function App() {
       <Header title="StockView"/>
       <Button title="Add Stock" onClick={() => {setAddStock(!showAddStock)}} />
       {showAddStock && <AddStock stocks={stocks}/>}
-      <Stocks stocks={stocks} onDelete={deleteStock}/>
+      {stocks.length > 0 ? <Stocks stocks={stocks} onDelete={deleteStock}/> : <div><br/><h2>Add a stock using the button above.</h2><br/></div>}
       <Footer />
     </div>);
 
