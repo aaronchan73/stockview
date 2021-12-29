@@ -3,9 +3,9 @@ import { useState } from 'react'
 
 let values = [];
 
-const Stock = ({name, bought}) => {
+const Stock = ({stock, onDelete}) => {
 
-    let CODE = name;
+    let CODE = stock.name;
     let API_KEY = "5L4IWDVJ6FCUBAKL";
     let API_URL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${CODE}&apikey=${API_KEY}`;
     const [open, setOpen] = useState(0);
@@ -27,14 +27,17 @@ const Stock = ({name, bought}) => {
             }
         )
 
+
+
     return (
-        <div className="stock">
-            <h4>Stock: {name}</h4>
-            <p>Bought Price: ${bought}</p>
+        <div className="stock" onClick={() => onDelete(stock.id)}>
+            <h4>Stock: {stock.name}</h4>
+            <p>Bought Price: ${stock.bought}</p>
             <p>Open Price: ${(open * 1).toFixed(2)}</p>
-            <p>Net Profit: ${(open - bought).toFixed(2)}</p>
+            <p>Net Profit: ${(open - stock.bought).toFixed(2)}</p>
         </div>
     );
 }
 
 export default Stock;
+
