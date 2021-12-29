@@ -4,7 +4,7 @@ import { TiDelete } from "react-icons/ti";
 
 let values = [];
 
-const Stock = ({stock, onDelete}) => {
+const Stock = ({ stock, onDelete }) => {
 
     let CODE = stock.name;
     let API_KEY = "5L4IWDVJ6FCUBAKL";
@@ -28,14 +28,14 @@ const Stock = ({stock, onDelete}) => {
             }
         )
 
-
-
     return (
-        <div className="stock" style={{color: "#E0E0E0"}}>
-            <h4>Stock: {stock.name} <TiDelete onClick={() => onDelete(stock.id)}/> </h4>
+        <div className="stock" style={{ color: "#E0E0E0" }}>
+            <h4>Stock: {stock.name} <TiDelete onClick={() => onDelete(stock.id)} /> </h4>
             <p>Bought Price: ${stock.bought}</p>
             <p>Open Price: ${(open * 1).toFixed(2)}</p>
-            <p>Net Profit: ${(open - stock.bought).toFixed(2)}</p>
+            {(open - stock.bought) >= 0 ? 
+            <p style={{color: "#00ff4c"}}>Net Profit: ${(open - stock.bought).toFixed(2)}</p> :
+            <p style={{color: "#ff2e2e"}}>Net Profit: ${(open - stock.bought).toFixed(2)}</p>}
         </div>
     );
 }
