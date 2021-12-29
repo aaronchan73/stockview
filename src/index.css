@@ -60,6 +60,11 @@ body {
   background: #424242;
   margin: 5px;
   padding: 10px 20px;
+  width: 350px;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   cursor: pointer;
 }
 

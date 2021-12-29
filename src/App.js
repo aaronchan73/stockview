@@ -52,7 +52,7 @@ function App() {
 
   return (<div className='App'>
       <Header title="StockView"/>
-      <Button title="Add Stock" onClick={() => {setAddStock(!showAddStock)}} />
+      <Button title="Add Stock" onClick={() => {setAddStock(!showAddStock)}} /><br/>
       {showAddStock && <AddStock stocks={stocks}/>}
       {stocks.length > 0 ? <Stocks stocks={stocks} onDelete={deleteStock}/> : 
       <div><br/><h2 style={{color: "#E0E0E0"}}>Add a stock using the button above.</h2><br/></div>}
