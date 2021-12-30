@@ -50,12 +50,20 @@ function App() {
     setStocks(stocks.filter((stock) => stock.id !== id));
   }
 
+  const addStock = (stock) => {
+    const newID = stocks.length + 1;
+    const newStock = {newID, ...stock}
+    setStocks([...stocks, stock]);
+    console.log(stocks);
+    console.log(stock);
+  }
+
   return (<div className='App'>
       <Header title="StockView"/>
       <Button title="Add Stock" onClick={() => {setAddStock(!showAddStock)}} /><br/>
-      {showAddStock && <AddStock stocks={stocks}/>}
+      {showAddStock && <AddStock onAdd={addStock}/>}
       {stocks.length > 0 ? <Stocks stocks={stocks} onDelete={deleteStock}/> : 
-      <div><br/><h2 style={{color: "#E0E0E0"}}>Add a stock using the button above.</h2><br/></div>}
+      <div><br/><h2>Add a stock using the button above.</h2><br/></div>}
       <Footer />
     </div>);
 
