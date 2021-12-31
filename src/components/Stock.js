@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { TiDelete } from "react-icons/ti";
+import { FaAngleDown, FaTrashAlt } from "react-icons/fa"
 
 let values = [];
 
 const Stock = ({ stock, onDelete }) => {
 
     const [open, setOpen] = useState(0);
+    const [details, setDetails] = useState(false);
 
     useEffect(() => {
         let API_KEY = "5L4IWDVJ6FCUBAKL";
@@ -32,13 +33,18 @@ const Stock = ({ stock, onDelete }) => {
     }, []);
 
     return (
-        <div className="stock">
-            <h4>Stock: {stock.name} <TiDelete onClick={() => onDelete(stock.id)} /> </h4>
+        <div className="stock" onClick={() => setDetails(!details)}>
+            <h4>Stock: {stock.name}</h4>
+            <FaAngleDown />
             <p>Bought Price: ${stock.bought}</p>
             <p>Open Price: ${(open * 1).toFixed(2)}</p>
             {(open - stock.bought) >= 0 ?
                 <p style={{ color: "#00ff4c" }}>Net Profit: ${(open - stock.bought).toFixed(2)}</p> :
                 <p style={{ color: "#ff2e2e" }}>Net Profit: ${(open - stock.bought).toFixed(2)}</p>}
+            {details &&
+                <div>
+                    <FaTrashAlt onClick={() => onDelete(stock.id)} />
+                </div>}
         </div>
     );
 }
