@@ -60,15 +60,18 @@ const Stock = ({ stock, onDelete }) => {
             {!details ? <FaAngleDown /> : <FaAngleUp />}
             <p>Bought Price: ${stock.bought}</p>
             <p>Close Price: ${(close * 1).toFixed(2)}</p>
-            {(close - stock.bought) >= 0 ?
+            {!details && ((close - stock.bought) >= 0 ?
                 <p style={{ color: "#00ff4c" }}>Net Profit: ${(close - stock.bought).toFixed(2)}</p> :
-                <p style={{ color: "#ff2e2e" }}>Net Profit: ${(close - stock.bought).toFixed(2)}</p>}
+                <p style={{ color: "#ff2e2e" }}>Net Profit: ${(close - stock.bought).toFixed(2)}</p>)}
             {details &&
                 <div>
                     <p>Open Price: ${(open * 1).toFixed(2)}</p>
                     <p>High Price: ${(high * 1).toFixed(2)}</p>
                     <p>Low Price: ${(low * 1).toFixed(2)}</p>
                     <p>Volume: {volume}</p>
+                    {(close - stock.bought) >= 0 ?
+                        <p style={{ color: "#00ff4c" }}>Net Profit: ${(close - stock.bought).toFixed(2)}</p> :
+                        <p style={{ color: "#ff2e2e" }}>Net Profit: ${(close - stock.bought).toFixed(2)}</p>}
                     <FaTrashAlt onClick={() => onDelete(stock.id)} />
                 </div>}
         </div>
