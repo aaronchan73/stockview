@@ -39,13 +39,14 @@ function App() {
 
   const addStock = (stock) => {
     let name = stock.name;
-    let bought = stock.bought;
+    let bought = parseFloat(stock.bought);
     let newStock = { 
       id: stocks.length + 1,
       name: name,
       bought: bought
     }
     setStocks([...stocks, newStock]);
+    console.log(stocks);
   }
 
   return (<div className='App'>
