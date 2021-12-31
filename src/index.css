@@ -115,6 +115,10 @@ body {
   height: 20px;
 }
 
+input {
+  color: #424242;
+}
+
 footer {
   margin-top: 30px;
   text-align: center;

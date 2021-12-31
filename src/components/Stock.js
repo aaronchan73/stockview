@@ -6,16 +6,11 @@ let values = [];
 
 const Stock = ({ stock, onDelete }) => {
 
-    let CODE = stock.name;
-    let API_KEY = "5L4IWDVJ6FCUBAKL";
-    let API_URL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${CODE}&apikey=${API_KEY}`;
     const [open, setOpen] = useState(0);
 
     useEffect(() => {
-        fetchAPI();
-    }, []);
-
-    const fetchAPI = () => {
+        let API_KEY = "5L4IWDVJ6FCUBAKL";
+        let API_URL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock.name}&apikey=${API_KEY}`;
         fetch(API_URL)
             .then(
                 (response) => {
@@ -34,7 +29,7 @@ const Stock = ({ stock, onDelete }) => {
                 }
             )
 
-    }
+    }, []);
 
     return (
         <div className="stock">
