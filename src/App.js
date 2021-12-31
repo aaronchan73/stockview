@@ -31,41 +31,31 @@ function App() {
     name: "NKE",
     bought: 167.21
   }
-]);
-
-  // const calcProfits = () => {
-  //   let profits = 0;
-
-  //   stocks.forEach((stock) => {
-  //     profits += (stock.current - stock.bought);
-  //   });
-
-  //   return profits;
-
-  // }
-
-  //<TotalProfits profits={calcProfits()} />
+  ]);
 
   const deleteStock = (id) => {
     setStocks(stocks.filter((stock) => stock.id !== id));
   }
 
   const addStock = (stock) => {
-    const newID = stocks.length + 1;
-    const newStock = {newID, ...stock}
-    setStocks([...stocks, stock]);
-    console.log(stocks);
-    console.log(stock);
+    let name = stock.name;
+    let bought = stock.bought;
+    let newStock = { 
+      id: stocks.length + 1,
+      name: name,
+      bought: bought
+    }
+    setStocks([...stocks, newStock]);
   }
 
   return (<div className='App'>
-      <Header title="StockView"/>
-      <Button title="Add Stock" onClick={() => {setAddStock(!showAddStock)}} /><br/>
-      {showAddStock && <AddStock onAdd={addStock}/>}
-      {stocks.length > 0 ? <Stocks stocks={stocks} onDelete={deleteStock}/> : 
-      <div><br/><h2>Add a stock using the button above.</h2><br/></div>}
-      <Footer />
-    </div>);
+    <Header title="StockView" />
+    <Button title="Add Stock" onClick={() => { setAddStock(!showAddStock) }} /><br />
+    {showAddStock && <AddStock onAdd={addStock} />}
+    {stocks.length > 0 ? <Stocks stocks={stocks} onDelete={deleteStock} /> :
+      <div><br /><h2>Add a stock using the button above.</h2><br /></div>}
+    <Footer />
+  </div>);
 
 }
 

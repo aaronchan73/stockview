@@ -24,6 +24,7 @@ const Stock = ({ stock, onDelete }) => {
                     values.push(data["Time Series (Daily)"][date]["1. open"]);
                 }
 
+                console.log(values);
                 setOpen(values[0]);
             }
         )

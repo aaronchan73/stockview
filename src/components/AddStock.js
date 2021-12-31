@@ -9,8 +9,8 @@ const AddStock = ({ onAdd }) => {
     const submitStock = (e) => {
         e.preventDefault();
         onAdd({
-            code,
-            bought
+            name: code,
+            bought: bought
         });
 
         setCode("");
@@ -18,12 +18,12 @@ const AddStock = ({ onAdd }) => {
     }
 
     return (<form>
-            <label for="code">Stock Code: </label>
-            <input id="code" name="code" value={code} onChange={(e) => setCode(e.target.value)}/><br/>
-            <label for="bought">Bought Price: </label>
-            <input id="bought" name="bought" value={bought} onChange={(e) => setBought(e.target.value)}/><br/>
-            <input className="btn" type="submit" onSubmit={submitStock}/>
-        </form>);
+        <label for="code">Stock Code: </label>
+        <input id="code" name="code" value={code} onChange={(e) => setCode(e.target.value)} /><br />
+        <label for="bought">Bought Price: </label>
+        <input id="bought" name="bought" value={bought} onChange={(e) => setBought(e.target.value)} /><br />
+        <input className="btn" type="submit" onClick={submitStock} />
+    </form>);
 }
 
 export default AddStock
