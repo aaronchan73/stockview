@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { FaAngleDown, FaTrashAlt } from "react-icons/fa"
+import { FaAngleUp, FaAngleDown, FaTrashAlt } from "react-icons/fa"
 
 let values = [];
 
@@ -35,7 +35,7 @@ const Stock = ({ stock, onDelete }) => {
     return (
         <div className="stock" onClick={() => setDetails(!details)}>
             <h4>Stock: {stock.name}</h4>
-            <FaAngleDown />
+            {!details ? <FaAngleDown /> : <FaAngleUp />}
             <p>Bought Price: ${stock.bought}</p>
             <p>Open Price: ${(open * 1).toFixed(2)}</p>
             {(open - stock.bought) >= 0 ?
