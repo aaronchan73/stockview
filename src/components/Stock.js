@@ -2,8 +2,6 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { FaAngleUp, FaAngleDown, FaTrashAlt } from "react-icons/fa"
 
-let values = [];
-
 const Stock = ({ stock, onDelete }) => {
 
     const [open, setOpen] = useState(0);
@@ -20,7 +18,7 @@ const Stock = ({ stock, onDelete }) => {
             )
             .then(
                 (data) => {
-
+                    let values = [];
                     for (var date in data["Time Series (Daily)"]) {
                         values.push(data["Time Series (Daily)"][date]["1. open"]);
                     }
