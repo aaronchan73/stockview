@@ -5,16 +5,19 @@ const AddStock = ({ onAdd }) => {
 
     const [code, setCode] = useState("");
     const [bought, setBought] = useState("");
+    const [share, setShare] = useState("");
 
     const submitStock = (e) => {
         e.preventDefault();
         onAdd({
             name: code,
-            bought: bought
+            bought: bought,
+            shares: share
         });
 
         setCode("");
         setBought("");
+        setShare("");
     }
 
     return (<form>
@@ -22,6 +25,8 @@ const AddStock = ({ onAdd }) => {
         <input id="code" name="code" value={code} onChange={(e) => setCode(e.target.value)} /><br />
         <label for="bought">Bought Price: </label>
         <input id="bought" name="bought" value={bought} onChange={(e) => setBought(e.target.value)} /><br />
+        <label for="share">Shares:  </label>
+        <input id="share" name="share" value={share} onChange={(e) => setShare(e.target.value)} /><br />
         <input className="btn" type="submit" onClick={submitStock} />
     </form>);
 }

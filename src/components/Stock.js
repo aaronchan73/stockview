@@ -58,11 +58,12 @@ const Stock = ({ stock, onDelete }) => {
         <div className="stock" onClick={() => setDetails(!details)}>
             <h4>Stock: {stock.name}</h4>
             {!details ? <FaAngleDown /> : <FaAngleUp />}
+            <p>Shares: {stock.shares}</p>
             <p>Bought Price: ${stock.bought}</p>
             <p>Close Price: ${(close * 1).toFixed(2)}</p>
             {!details && ((close - stock.bought) >= 0 ?
-                <p style={{ color: "#00ff4c" }}>Net Profit: ${(close - stock.bought).toFixed(2)}</p> :
-                <p style={{ color: "#ff2e2e" }}>Net Profit: ${(close - stock.bought).toFixed(2)}</p>)}
+                <p style={{ color: "#00ff4c" }}>Net Profit: ${((close - stock.bought)*stock.shares).toFixed(2)}</p> :
+                <p style={{ color: "#ff2e2e" }}>Net Profit: ${((close - stock.bought)*stock.shares).toFixed(2)}</p>)}
             {details &&
                 <div>
                     <p>Open Price: ${(open * 1).toFixed(2)}</p>
@@ -70,8 +71,8 @@ const Stock = ({ stock, onDelete }) => {
                     <p>Low Price: ${(low * 1).toFixed(2)}</p>
                     <p>Volume: {volume}</p>
                     {(close - stock.bought) >= 0 ?
-                        <p style={{ color: "#00ff4c" }}>Net Profit: ${(close - stock.bought).toFixed(2)}</p> :
-                        <p style={{ color: "#ff2e2e" }}>Net Profit: ${(close - stock.bought).toFixed(2)}</p>}
+                        <p style={{ color: "#00ff4c" }}>Net Profit: ${((close - stock.bought)*stock.shares).toFixed(2)}</p> :
+                        <p style={{ color: "#ff2e2e" }}>Net Profit: ${((close - stock.bought)*stock.shares).toFixed(2)}</p>}
                     <FaTrashAlt onClick={() => onDelete(stock.id)} />
                 </div>}
         </div>
