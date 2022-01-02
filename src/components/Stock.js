@@ -12,6 +12,10 @@ const Stock = ({ stock, onDelete }) => {
     const [details, setDetails] = useState(false);
 
     useEffect(() => {
+        fetchAPI();
+    }, []);
+
+    const fetchAPI = () => {
         let API_KEY = "5L4IWDVJ6FCUBAKL";
         let API_URL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock.name}&apikey=${API_KEY}`;
         fetch(API_URL)
@@ -37,6 +41,7 @@ const Stock = ({ stock, onDelete }) => {
                         volumeValues.push(data["Time Series (Daily)"][date]["5. volume"]);
                     }
 
+                    console.log(stock.name);
                     console.log(openValues);
                     console.log(highValues);
                     console.log(lowValues);
@@ -51,8 +56,7 @@ const Stock = ({ stock, onDelete }) => {
 
                 }
             )
-
-    }, []);
+    }
 
     return (
         <div className="stock" onClick={() => setDetails(!details)}>
