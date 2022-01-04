@@ -36,13 +36,11 @@ const Stock = ({ stock, onDelete, addProfit }) => {
                     console.log(data);
                     for (var date in data["Time Series (Daily)"]) {
                         let closed = data["Time Series (Daily)"][date]["4. close"];
-                        let newDate = new Date(date);
-                        let parsedDate = newDate.getDate();
                         dateValues.push(date);
-                        pairedData.push(
+                        pairedData.unshift(
                             {
-                                x: parsedDate,
-                                y: closed
+                                x: date.substring(8),
+                                y: parseFloat(closed)
                             }
                         );
                         closedValues.push(closed);
@@ -54,7 +52,7 @@ const Stock = ({ stock, onDelete, addProfit }) => {
                     console.log(closedValues[1]);
 
                     if (typeof today !== 'undefined') {
-                        setPairs(pairedData);
+                        setPairs(pairedData.reverse());
                         setOpen(data["Time Series (Daily)"][today]["1. open"]);
                         setHigh(data["Time Series (Daily)"][today]["2. high"]);
                         setLow(data["Time Series (Daily)"][today]["3. low"]);

@@ -4,11 +4,17 @@ import { useState } from 'react'
 
 const LineGraph = ({ data, profit }) => {
 
+    console.log(data)
     let newData = [];
 
-    for (let i = 0; i < 6; i++) {
-        newData.push(data[i]);
+    for (let i = 0; i < 7; i++) {
+        newData.unshift({
+            x: data[i].x,
+            y: parseFloat(data[i].y)
+        });
     }
+
+    console.log(newData);
 
     return <VictoryChart>
         {profit ?
