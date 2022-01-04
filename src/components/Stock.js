@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { FaAngleUp, FaAngleDown, FaTrashAlt } from "react-icons/fa"
+import { FaAngleUp, FaAngleDown, FaTrashAlt, FaPlusCircle } from "react-icons/fa"
 
-const Stock = ({ stock, onDelete }) => {
+const Stock = ({ stock, onDelete, addProfit }) => {
 
     const [open, setOpen] = useState(0);
     const [high, setHigh] = useState(0);
@@ -77,7 +77,8 @@ const Stock = ({ stock, onDelete }) => {
                     {(close - stock.bought) >= 0 ?
                         <p style={{ color: "#00ff4c" }}>Net Profit: ${((close - stock.bought)*stock.shares).toFixed(2)}</p> :
                         <p style={{ color: "#ff2e2e" }}>Net Profit: ${((close - stock.bought)*stock.shares).toFixed(2)}</p>}
-                    <FaTrashAlt onClick={() => onDelete(stock.id)} />
+                    <FaTrashAlt onClick={() => onDelete(stock.id)} /><br/>
+                    <FaPlusCircle onClick={() => addProfit(((close - stock.bought)*stock.shares))}/>
                 </div>}
         </div>
     );

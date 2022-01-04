@@ -5,7 +5,7 @@ import Button from './components/Button'
 import Stocks from './components/Stocks'
 import Footer from './components/Footer'
 import AddStock from './components/AddStock'
-// import TotalProfits from './components/TotalProfits'
+import TotalProfits from './components/TotalProfits'
 
 function App() {
 
@@ -37,6 +37,8 @@ function App() {
   }
   ]);
 
+  const [profits, setProfits] = useState(0);
+
   const deleteStock = (id) => {
     setStocks(stocks.filter((stock) => stock.id !== id));
   }
@@ -55,11 +57,18 @@ function App() {
     console.log(stocks);
   }
 
+  const addProfit = (amount) => {
+    let profit = profits + amount;
+    console.log(profit);
+    setProfits(profit);
+  }
+
   return (<div className='App'>
     <Header title="StockView" />
     <Button title="Add Stock" onClick={() => { setAddStock(!showAddStock) }} /><br />
     {showAddStock && <AddStock onAdd={addStock} />}
-    {stocks.length > 0 ? <Stocks stocks={stocks} onDelete={deleteStock} /> :
+    <TotalProfits profits={profits}/>
+    {stocks.length > 0 ? <Stocks stocks={stocks} onDelete={deleteStock} addProfit={addProfit} /> :
       <div><br /><h2>Add a stock using the button above.</h2><br /></div>}
     <Footer />
   </div>);
