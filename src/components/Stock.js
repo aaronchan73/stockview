@@ -77,8 +77,8 @@ const Stock = ({ stock, onDelete, addProfit }) => {
                     {(close - stock.bought) >= 0 ?
                         <p style={{ color: "#00ff4c" }}>Net Profit: ${((close - stock.bought)*stock.shares).toFixed(2)}</p> :
                         <p style={{ color: "#ff2e2e" }}>Net Profit: ${((close - stock.bought)*stock.shares).toFixed(2)}</p>}
-                    <FaTrashAlt onClick={() => onDelete(stock.id)} /><br/>
-                    <FaPlusCircle onClick={() => addProfit(((close - stock.bought)*stock.shares))}/>
+                    <FaPlusCircle onClick={() => addProfit(((close - stock.bought)*stock.shares))}/><br/>
+                    <FaTrashAlt onClick={() => onDelete(stock.id)} />
                 </div>}
         </div>
     );
