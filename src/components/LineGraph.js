@@ -1,27 +1,25 @@
 import React from 'react'
 import { VictoryLine, VictoryChart } from 'victory'
+import { useState } from 'react'
 
 const LineGraph = ({ data, profit }) => {
+
+    let newData = [];
+
+    for (let i = 0; i < 6; i++) {
+        newData.push(data[i]);
+    }
+
     return <VictoryChart>
-        {profit ? 
-        <VictoryLine
-            style={{ data: { stroke: "#00ff4c" }}}
-            data={[
-                { x: 1, y: 2 },
-                { x: 2, y: 3 },
-                { x: 3, y: 5 },
-                { x: 4, y: 4 },
-                { x: 5, y: 6 }
-            ]}></VictoryLine> :
+        {profit ?
             <VictoryLine
-                style={{ data: { stroke: "#ff2e2e" }}}
-                data={[
-                    { x: 1, y: 2 },
-                    { x: 2, y: 3 },
-                    { x: 3, y: 5 },
-                    { x: 4, y: 4 },
-                    { x: 5, y: 6 }
-                ]}></VictoryLine>}
+                style={{ data: { stroke: "#00ff4c" } }}
+                data={newData}>
+            </VictoryLine> :
+            <VictoryLine
+                style={{ data: { stroke: "#ff2e2e" } }}
+                data={newData}>
+            </VictoryLine>}
     </VictoryChart>
 }
 

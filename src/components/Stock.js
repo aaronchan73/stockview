@@ -13,6 +13,7 @@ const Stock = ({ stock, onDelete, addProfit }) => {
     const [details, setDetails] = useState(false);
     const [error, setError] = useState(false);
     const [pairs, setPairs] = useState([]);
+    const [closePrev, setClosePrev] = useState(0);
 
     useEffect(() => {
         fetchAPI();
@@ -31,23 +32,26 @@ const Stock = ({ stock, onDelete, addProfit }) => {
                 (data) => {
                     let dateValues = [];
                     let pairedData = [];
+                    let closedValues = [];
                     console.log(data);
-
                     for (var date in data["Time Series (Daily)"]) {
                         let closed = data["Time Series (Daily)"][date]["4. close"];
+                        let newDate = new Date(date);
+                        let parsedDate = newDate.getDate();
                         dateValues.push(date);
                         pairedData.push(
                             {
-                                x: date,
+                                x: parsedDate,
                                 y: closed
                             }
                         );
+                        closedValues.push(closed);
                     }
 
                     let today = dateValues[0];
-                    console.log(today);
-
                     console.log(stock.name);
+                    console.log(closedValues[0]);
+                    console.log(closedValues[1]);
 
                     if (typeof today !== 'undefined') {
                         setPairs(pairedData);
@@ -55,6 +59,7 @@ const Stock = ({ stock, onDelete, addProfit }) => {
                         setHigh(data["Time Series (Daily)"][today]["2. high"]);
                         setLow(data["Time Series (Daily)"][today]["3. low"]);
                         setClose(data["Time Series (Daily)"][today]["4. close"]);
+                        setClosePrev(closedValues[1]);
                         setVolume(data["Time Series (Daily)"][today]["5. volume"]);
                     } else {
                         setError(true);
@@ -74,8 +79,14 @@ const Stock = ({ stock, onDelete, addProfit }) => {
                     <p>Bought Price: ${stock.bought}</p>
                     <p>Close Price: ${(close * 1).toFixed(2)}</p>
                     {!details && ((close - stock.bought) >= 0 ?
-                        <p style={{ color: "#00ff4c" }}>Net Profit: ${((close - stock.bought) * stock.shares).toFixed(2)}</p> :
-                        <p style={{ color: "#ff2e2e" }}>Net Profit: ${((close - stock.bought) * stock.shares).toFixed(2)}</p>)}
+                        <div>
+                            <p style={{ color: "#00ff4c" }}>Net Profit: ${((close - stock.bought) * stock.shares).toFixed(2)}</p>
+                            <FaPlusCircle onClick={() => addProfit(((close - stock.bought) * stock.shares))} />
+                        </div> :
+                        <div>
+                            <p style={{ color: "#ff2e2e" }}>Net Profit: ${((close - stock.bought) * stock.shares).toFixed(2)}</p>
+                            <FaPlusCircle onClick={() => addProfit(((close - stock.bought) * stock.shares))} />
+                        </div>)}
                     {details &&
                         <div>
                             <p>Open Price: ${(open * 1).toFixed(2)}</p>
@@ -85,8 +96,17 @@ const Stock = ({ stock, onDelete, addProfit }) => {
                             {(close - stock.bought) >= 0 ?
                                 <p style={{ color: "#00ff4c" }}>Net Profit: ${((close - stock.bought) * stock.shares).toFixed(2)}</p> :
                                 <p style={{ color: "#ff2e2e" }}>Net Profit: ${((close - stock.bought) * stock.shares).toFixed(2)}</p>}
-                            <FaPlusCircle onClick={() => addProfit(((close - stock.bought) * stock.shares))} /><br />
-                            <LineGraph data={pairs} profit={(close - stock.bought) >= 0} /><br />
+                            <FaPlusCircle onClick={() => addProfit(((close - stock.bought) * stock.shares))} />
+                            <LineGraph data={pairs} profit={(close - closePrev) >= 0} /><br />
+                            {(close - closePrev) >= 0 ?
+                                <div>
+                                    <p style={{ color: "#00ff4c" }}>+{(close - closePrev).toFixed(2)}</p>
+                                    <p style={{ color: "#00ff4c" }}>+{(((close - closePrev) / closePrev) * 100).toFixed(2)}%</p>
+                                </div> :
+                                <div>
+                                    <p style={{ color: "#ff2e2e" }}>{(close - closePrev).toFixed(2)}</p>
+                                    <p style={{ color: "#ff2e2e" }}>{(((close - closePrev) / closePrev) * 100).toFixed(2)}%</p>
+                                </div>}<br />
                             <FaTrashAlt onClick={() => onDelete(stock.id)} />
                         </div>}
                 </div> :
