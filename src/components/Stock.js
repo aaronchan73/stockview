@@ -100,11 +100,11 @@ const Stock = ({ stock, onDelete, addProfit }) => {
                             <LineGraph data={pairs} profit={(close - closePrev) >= 0} /><br />
                             {(close - closePrev) >= 0 ?
                                 <div>
-                                    <p style={{ color: "#00ff4c" }}>+{(close - closePrev).toFixed(2)}</p>
+                                    <p style={{ color: "#00ff4c" }}>+${(close - closePrev).toFixed(2)}</p>
                                     <p style={{ color: "#00ff4c" }}>+{(((close - closePrev) / closePrev) * 100).toFixed(2)}%</p>
                                 </div> :
                                 <div>
-                                    <p style={{ color: "#ff2e2e" }}>{(close - closePrev).toFixed(2)}</p>
+                                    <p style={{ color: "#ff2e2e" }}>-${(-1*(close - closePrev)).toFixed(2)}</p>
                                     <p style={{ color: "#ff2e2e" }}>{(((close - closePrev) / closePrev) * 100).toFixed(2)}%</p>
                                 </div>}<br />
                             <FaTrashAlt onClick={() => onDelete(stock.id)} />
