@@ -1,10 +1,8 @@
 import React from 'react'
 import { VictoryLine, VictoryChart } from 'victory'
-import { useState } from 'react'
 
 const LineGraph = ({ data, profit }) => {
-
-    console.log(data)
+    
     let newData = [];
 
     for (let i = 0; i < 7; i++) {
@@ -13,8 +11,6 @@ const LineGraph = ({ data, profit }) => {
             y: parseFloat(data[i].y)
         });
     }
-
-    console.log(newData);
 
     return <VictoryChart>
         {profit ?
