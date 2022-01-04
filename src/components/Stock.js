@@ -12,6 +12,7 @@ const Stock = ({ stock, onDelete, addProfit }) => {
     const [volume, setVolume] = useState(0);
     const [details, setDetails] = useState(false);
     const [error, setError] = useState(false);
+    const [pairs, setPairs] = useState([]);
 
     useEffect(() => {
         fetchAPI();
@@ -29,10 +30,18 @@ const Stock = ({ stock, onDelete, addProfit }) => {
             .then(
                 (data) => {
                     let dateValues = [];
+                    let pairedData = [];
                     console.log(data);
 
                     for (var date in data["Time Series (Daily)"]) {
+                        let closed = data["Time Series (Daily)"][date]["4. close"];
                         dateValues.push(date);
+                        pairedData.push(
+                            {
+                                x: date,
+                                y: closed
+                            }
+                        );
                     }
 
                     let today = dateValues[0];
@@ -41,6 +50,7 @@ const Stock = ({ stock, onDelete, addProfit }) => {
                     console.log(stock.name);
 
                     if (typeof today !== 'undefined') {
+                        setPairs(pairedData);
                         setOpen(data["Time Series (Daily)"][today]["1. open"]);
                         setHigh(data["Time Series (Daily)"][today]["2. high"]);
                         setLow(data["Time Series (Daily)"][today]["3. low"]);
@@ -75,8 +85,8 @@ const Stock = ({ stock, onDelete, addProfit }) => {
                             {(close - stock.bought) >= 0 ?
                                 <p style={{ color: "#00ff4c" }}>Net Profit: ${((close - stock.bought) * stock.shares).toFixed(2)}</p> :
                                 <p style={{ color: "#ff2e2e" }}>Net Profit: ${((close - stock.bought) * stock.shares).toFixed(2)}</p>}
-                            <LineGraph /><br />
                             <FaPlusCircle onClick={() => addProfit(((close - stock.bought) * stock.shares))} /><br />
+                            <LineGraph data={pairs} profit={(close - stock.bought) >= 0} /><br />
                             <FaTrashAlt onClick={() => onDelete(stock.id)} />
                         </div>}
                 </div> :

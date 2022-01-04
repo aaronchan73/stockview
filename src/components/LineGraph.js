@@ -1,11 +1,28 @@
 import React from 'react'
-import { VictoryBar } from 'victory'
+import { VictoryLine, VictoryChart } from 'victory'
 
-const LineGraph = () => {
-
-    const data = [{quarter: 1, earnings: 3000}, {quarter: 2, earnings: 4000}];
-
-    return <VictoryBar data={data} x="quarter" y="earnings" />
+const LineGraph = ({ data, profit }) => {
+    return <VictoryChart>
+        {profit ? 
+        <VictoryLine
+            style={{ data: { stroke: "#00ff4c" }}}
+            data={[
+                { x: 1, y: 2 },
+                { x: 2, y: 3 },
+                { x: 3, y: 5 },
+                { x: 4, y: 4 },
+                { x: 5, y: 6 }
+            ]}></VictoryLine> :
+            <VictoryLine
+                style={{ data: { stroke: "#ff2e2e" }}}
+                data={[
+                    { x: 1, y: 2 },
+                    { x: 2, y: 3 },
+                    { x: 3, y: 5 },
+                    { x: 4, y: 4 },
+                    { x: 5, y: 6 }
+                ]}></VictoryLine>}
+    </VictoryChart>
 }
 
 export default LineGraph
