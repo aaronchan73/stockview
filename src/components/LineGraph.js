@@ -6,10 +6,7 @@ const LineGraph = ({ data, profit }) => {
     let newData = [];
 
     for (let i = 0; i < 7; i++) {
-        newData.unshift({
-            x: data[i].x,
-            y: parseFloat(data[i].y)
-        });
+        newData.unshift(data[i]);
     }
 
     return <VictoryChart>
