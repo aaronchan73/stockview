@@ -69,7 +69,7 @@ function App() {
     {showAddStock && <AddStock onAdd={addStock} />}
     <TotalProfits profits={profits}/>
     {stocks.length > 0 ? <Stocks stocks={stocks} onDelete={deleteStock} addProfit={addProfit} /> :
-      <div><br /><h2>Add a stock using the button above.</h2><br /></div>}
+      <div><br /><h2 class="text-lg">Add a stock using the button above.</h2><br /></div>}
     <Footer />
   </div>);
 
