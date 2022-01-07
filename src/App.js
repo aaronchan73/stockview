@@ -63,7 +63,7 @@ function App() {
     setProfits(profit);
   }
 
-  return (<div className='App'>
+  return (<div class="bg-gray-700">
     <Header title="StockView" />
     <Button title="Add Stock" onClick={() => { setAddStock(!showAddStock) }} /><br />
     {showAddStock && <AddStock onAdd={addStock} />}

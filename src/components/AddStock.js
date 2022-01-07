@@ -20,7 +20,7 @@ const AddStock = ({ onAdd }) => {
         setShare("");
     }
 
-    return (<form>
+    return (<form class="text-gray-50">
         <label htmlFor="code">Stock Code: </label>
         <input id="code" name="code" value={code} onChange={(e) => setCode(e.target.value)} /><br />
         <label htmlFor="bought">Bought Price: </label>

@@ -68,7 +68,7 @@ const Stock = ({ stock, onDelete, addProfit }) => {
     }
 
     return (
-        <div className="stock" onClick={() => setDetails(!details)}>
+        <div class="text-gray-50" onClick={() => setDetails(!details)}>
             {!error ?
                 <div>
                     <h4>Stock: {stock.name}</h4>

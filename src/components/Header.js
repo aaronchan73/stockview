@@ -4,7 +4,7 @@ const Header = ({title}) => {
 
     return (
         <header>
-            <h1>{title}</h1>
+            <h1 class="text-gray-50">{title}</h1>
             <img src="logo2green.png" alt="StockView" width="80" height="60" />
         </header>
     );
