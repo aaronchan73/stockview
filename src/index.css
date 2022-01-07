@@ -7,7 +7,7 @@
     @apply text-gray-50 text-center font-mono m-auto;
   }
   input {
-    @apply m-0.5;
+    @apply m-0.5 rounded-md;
   }
 }
 
