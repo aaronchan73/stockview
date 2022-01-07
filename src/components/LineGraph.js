@@ -9,7 +9,24 @@ const LineGraph = ({ data, profit }) => {
         newData.unshift(data[i]);
     }
 
-    return <VictoryChart>
+    const theme = {
+        axis: {
+            style: {
+                axis: {
+                    stroke: "white"
+                },
+                tickLabels: {
+                    fill: "white",
+                    padding: 10
+                },
+                grid: {
+                    stroke: "none"
+                }
+            }
+        }
+    }
+
+    return <VictoryChart theme={theme} >
         {profit ?
             <VictoryLine
                 style={{ data: { stroke: "#00ff4c" } }}
