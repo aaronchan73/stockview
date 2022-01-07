@@ -15,7 +15,7 @@ const Stock = ({ stock, onDelete, addProfit }) => {
     const [pairs, setPairs] = useState([]);
     const [closePrev, setClosePrev] = useState(0);
 
-    useEffect(() => { 
+    useEffect(() => {
         fetchAPI(); // eslint-disable-next-line
     }, []);
 
@@ -102,13 +102,16 @@ const Stock = ({ stock, onDelete, addProfit }) => {
                                     <p style={{ color: "#00ff4c" }}>+{(((close - closePrev) / closePrev) * 100).toFixed(2)}%</p>
                                 </div> :
                                 <div>
-                                    <p style={{ color: "#ff2e2e" }}>-${(-1*(close - closePrev)).toFixed(2)}</p>
+                                    <p style={{ color: "#ff2e2e" }}>-${(-1 * (close - closePrev)).toFixed(2)}</p>
                                     <p style={{ color: "#ff2e2e" }}>{(((close - closePrev) / closePrev) * 100).toFixed(2)}%</p>
                                 </div>}<br />
                             <FaTrashAlt onClick={() => onDelete(stock.id)} />
                         </div>}
                 </div> :
-                <h2>Please try again later.</h2>}
+                <div>
+                    <h2 class="mb-2">Please try again later.</h2>
+                    <FaTrashAlt onClick={() => onDelete(stock.id)} />
+                </div>}
         </div>
     );
 }
