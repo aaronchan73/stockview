@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import Button from './Button'
 
 const AddStock = ({ onAdd }) => {
 
@@ -20,14 +21,14 @@ const AddStock = ({ onAdd }) => {
         setShare("");
     }
 
-    return (<form class="text-gray-50">
+    return (<form class="m-2 text-gray-700">
         <label htmlFor="code">Stock Code: </label>
         <input id="code" name="code" value={code} onChange={(e) => setCode(e.target.value)} /><br />
         <label htmlFor="bought">Bought Price: </label>
         <input id="bought" name="bought" value={bought} onChange={(e) => setBought(e.target.value)} /><br />
         <label htmlFor="share">Shares:  </label>
         <input id="share" name="share" value={share} onChange={(e) => setShare(e.target.value)} /><br />
-        <input className="btn" type="submit" onClick={submitStock} />
+        <Button title="Submit" onClick={submitStock} />
     </form>);
 }
 

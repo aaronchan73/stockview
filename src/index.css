@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  * {
+    @apply text-gray-50 text-center font-mono m-auto;
+  }
+}
+
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 
 * {
@@ -71,7 +77,7 @@ body {
   cursor: pointer;
   /* display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between; */ /*
 }
 
 .stock.reminder {
