@@ -68,7 +68,7 @@ const Stock = ({ stock, onDelete, addProfit }) => {
     }
 
     return (
-        <div class="bg-gray-600 mb-5 mt-5 w-96 cursor-pointer p-5 rounded-xl" onClick={() => setDetails(!details)}>
+        <div class="bg-gray-600 mb-5 mt-5 w-96 cursor-pointer p-5 rounded-xl hover:bg-gray-500" onClick={() => setDetails(!details)}>
             {!error ?
                 <div>
                     <h4>Stock: {stock.name}</h4>
