@@ -15,8 +15,8 @@ const Stock = ({ stock, onDelete, addProfit }) => {
     const [pairs, setPairs] = useState([]);
     const [closePrev, setClosePrev] = useState(0);
 
-    useEffect(() => {
-        fetchAPI();
+    useEffect(() => { 
+        fetchAPI(); // eslint-disable-next-line
     }, []);
 
     const fetchAPI = () => {
