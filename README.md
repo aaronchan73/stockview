@@ -3,7 +3,7 @@
 # StockView 
 Real-time stock tracking web application made in React.js, with styling using Tailwind CSS. Updated data is fetched from Alpha Vantage's stock market API, which is visualized using Victory.js!
 
-<img width="1440" alt="Screen Shot 2022-01-12 at 8 01 19 PM" src="https://user-images.githubusercontent.com/84891329/149263707-9e420b28-abe4-45cc-b965-285728d7d193.png">
+<img width="1440" alt="Screen Shot 2022-01-12 at 8 11 39 PM" src="https://user-images.githubusercontent.com/84891329/149264627-2eaf06b4-c911-489a-a64b-983f740ac431.png">
 
 ## Stock Details
 View stock details, which include the amount of shares purchased, the initial price it was purchased at, the closing price, the opening price, the daily high price, the daily low price, and the volume. Net profits are calculated based on the bought price and the current closing price, which can be added to the **Total Net Profit** via the plus button underneath.
